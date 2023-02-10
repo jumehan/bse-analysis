@@ -4,7 +4,9 @@ function App() {
   return (
     <Container>
       <Row>
-        <Col xs="12"></Col>
+        <Col xs="12">
+       
+        </Col>
       </Row>
     </Container>
   );
