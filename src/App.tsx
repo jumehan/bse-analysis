@@ -1,13 +1,15 @@
-import { Col, Container, Row } from "reactstrap";
+import { BrowserRouter } from "react-router-dom";
+import { Container } from "reactstrap";
+import NavBar from "./components/layout/NavBar";
+import RouteList from "./components/routes/RouteList";
 
 function App() {
   return (
-    <Container>
-      <Row>
-        <Col xs="12">
-       
-        </Col>
-      </Row>
+    <Container className="my-4">
+      <BrowserRouter>
+        <NavBar />
+        <RouteList />
+      </BrowserRouter>
     </Container>
   );
 }
