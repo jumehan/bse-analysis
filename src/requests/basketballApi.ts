@@ -1,10 +1,10 @@
 import axios from "axios";
-import { TeamStatsInterface } from '../types/teamStats';
+import { TeamStatsInterface } from "../types/teamStats";
 
 /** Global constants */
 const BASE_URL = "process.env.API_BASE_URL";
-const SEASON = "2022-2023" // current season, static for demo purposes
-const LEAGUE = "12" // NBA, static for demo purposes
+const SEASON = "2022-2023"; // current season, static for demo purposes
+const LEAGUE = "12"; // NBA, static for demo purposes
 
 /** API class for managing data requests */
 class BasketBallApi {
