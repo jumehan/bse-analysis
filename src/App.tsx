@@ -1,8 +1,12 @@
-import "./App.css";
+import { Col, Container, Row } from "reactstrap";
 
 function App() {
   return (
-    <h1>hi</h1>
+    <Container>
+      <Row>
+        <Col xs="12"></Col>
+      </Row>
+    </Container>
   );
 }
 
