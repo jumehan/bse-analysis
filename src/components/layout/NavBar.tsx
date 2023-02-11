@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
+  Accordion,
+  AccordionBody,
+  AccordionHeader,
+  AccordionItem,
+  Col,
   Collapse,
+  Container,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
@@ -9,10 +16,13 @@ import {
   NavbarBrand,
   NavbarToggler,
   NavItem,
+  Row,
+  UncontrolledAccordion,
   UncontrolledDropdown,
 } from "reactstrap";
+import { eastConference, westConference } from "../../data/nbaTeams";
 
-function NavBar() {
+export default function NavBar() {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
 
@@ -38,10 +48,10 @@ function NavBar() {
               NBA Teams
             </DropdownToggle>
             <DropdownMenu end>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
+              <UncontrolledAccordion flush defaultOpen="east">
+                <EastConfTeams />
+                <WestConfTeams />
+              </UncontrolledAccordion>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
@@ -50,4 +60,38 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+/** React Component that displays a list of teams
+ * @returns {JSX.Element} list of teams in the Eastern Conference to display in dropdown menu
+ */
+const EastConfTeams = (): JSX.Element => {
+  return (
+    <AccordionItem>
+      <AccordionHeader targetId="east">Eastern Conference</AccordionHeader>
+      <AccordionBody accordionId="east">
+        {eastConference.map((team) => (
+          <DropdownItem key={team.code} tag={Link} to="">
+            {team.name}
+          </DropdownItem>
+        ))}
+      </AccordionBody>
+    </AccordionItem>
+  );
+};
+
+/** React Component that displays a list of teams
+ * @returns {JSX.Element} list of teams in the Eastern Conference to display in dropdown menu
+ */
+const WestConfTeams = (): JSX.Element => {
+  return (
+    <AccordionItem>
+      <AccordionHeader targetId="west">Western Conference</AccordionHeader>
+      <AccordionBody accordionId="west">
+        {westConference.map((team) => (
+          <DropdownItem className="px-0" key={team.code} tag={Link} to="">
+            {team.name}
+          </DropdownItem>
+        ))}
+      </AccordionBody>
+    </AccordionItem>
+  );
+};
