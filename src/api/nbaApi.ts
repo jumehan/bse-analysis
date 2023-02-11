@@ -1,9 +1,10 @@
 import axios from "axios";
+import { PlayerDetails } from "../types/playerDetails";
 import { Players } from "../types/players";
 import { PlayerStats } from "../types/playerStats";
 
 /** Global constants */
-const BASE_URL = "process.env.API_BASE_URL";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 /** API class for managing data requests */
 class nbaApi {
@@ -13,8 +14,8 @@ class nbaApi {
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = {
-      "x-rapidapi-key": process.env.API_KEY,
-      "x-rapidapi-host": process.env.API_HOST,
+      "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+      "X-RapidAPI-Host": import.meta.env.VITE_API_HOST,
     };
     const params = method === "get" ? data : {};
 
@@ -27,25 +28,33 @@ class nbaApi {
 
   /************************************************ | Individual Api Routes | */
 
-  /** Get Request for Player stats by optional parameters
+  /** Get Request for Player details by id
    *
-   * @param id Player ID (optional)
-   * @param season Season ID (optional)
-   * @param game Game ID (optional)
-   * @param team Team ID (optional)
+   * @param id Player ID = string number
+   *
+   * @returns array of Player details object
+   */
+  static async getPlayerDetails(id: string): Promise<PlayerDetails> {
+    const resp = await this.request("players/", {
+      id: id || "",
+    });
+    console.debug("getPlayerDetails()", resp);
+    return resp;
+  }
+
+  /** Get Request for Player stats by id & season
+   *
+   * @param id Player ID = string number
+   * @param season Season ID =  string number
    *
    * @returns array of Player stats object
    */
   static async getPlayerStats(
-    id: number,
-    season: number,
-    game: number,
-    team: number
+    id: string,
+    season: string
   ): Promise<PlayerStats> {
     const resp = await this.request("players/statistics", {
       id: id || "",
-      game: game || "",
-      team: team || "",
       season: season || "",
     });
     console.debug("getPlayerStats()", resp);
@@ -64,7 +73,7 @@ class nbaApi {
       search: search || "",
       team: team || "",
     });
-    console.debug("getPlayerStats()", resp);
+    console.debug("getPlayers()", resp);
     return resp;
   }
 }
