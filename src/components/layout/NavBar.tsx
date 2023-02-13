@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Accordion,
   AccordionBody,
   AccordionHeader,
   AccordionItem,
-  Col,
   Collapse,
-  Container,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
@@ -16,13 +13,17 @@ import {
   NavbarBrand,
   NavbarToggler,
   NavItem,
-  Row,
   UncontrolledAccordion,
   UncontrolledDropdown,
 } from "reactstrap";
 import { eastConference, westConference } from "../../data/nbaTeams";
 
-export default function NavBar() {
+/** React Navigation Bar Component
+ * Conains Logo and Header
+ * Dropdown menu displays list generated from `EastConfTeams and `WestConfTeams`
+ * @returns {JSX.Element} containing the navbar elements
+ */
+export default function NavBar(): JSX.Element {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
 

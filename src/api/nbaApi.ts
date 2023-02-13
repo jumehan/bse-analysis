@@ -6,7 +6,7 @@ import { PlayerStats } from "../types/playerStats";
 /** Global constants */
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-/** API class for managing data requests */
+/** API class for managing data requests for NBA data from rapidAPI */
 class nbaApi {
   /** Base request constructor */
   static async request(endpoint: string, data = {}, method = "get") {
