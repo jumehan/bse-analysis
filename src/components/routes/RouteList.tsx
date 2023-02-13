@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import PlayerProfile from "../pages/PlayerProfile";
+import PlayerProfile from "../../pages/PlayerProfile";
 
 /** RouteList component
  * Displays a list of routes

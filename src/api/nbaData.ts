@@ -13,7 +13,7 @@ class nbaData {
       (player) =>
         player.firstName === firstname && player.lastName === lastname
     );
-    console.log(player);
+    console.debug("getPlayerId", player);
     return player[0].personId;
   }
 }
