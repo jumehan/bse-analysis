@@ -1,3 +1,5 @@
 {
-    "editorconfig": true
+  "editorconfig": true,
+  "printWidth": 600,
+  "singleAttributePerLine": false
 }
