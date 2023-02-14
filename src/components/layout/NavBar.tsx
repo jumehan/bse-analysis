@@ -38,7 +38,7 @@ export default function NavBar(): JSX.Element {
             width: 32,
           }}
         />
-        Player Statistics
+        NBA Data Analytics
       </NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} aria-controls="navbar-navigation" />
       <Collapse isOpen={!collapsed} navbar>
@@ -49,7 +49,7 @@ export default function NavBar(): JSX.Element {
               NBA Teams
             </DropdownToggle>
             <DropdownMenu end>
-              <UncontrolledAccordion flush defaultOpen="east">
+              <UncontrolledAccordion flush defaultOpen="east" className="small">
                 <EastConfTeams />
                 <WestConfTeams />
               </UncontrolledAccordion>
@@ -66,7 +66,7 @@ export default function NavBar(): JSX.Element {
  */
 const EastConfTeams = (): JSX.Element => {
   return (
-    <AccordionItem>
+    <AccordionItem style={{width:"12rem"}}>
       <AccordionHeader targetId="east">Eastern Conference</AccordionHeader>
       <AccordionBody accordionId="east">
         {eastConference.map((team) => (

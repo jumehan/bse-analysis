@@ -53,10 +53,18 @@ th {
   font-weight: 600;
 }
 
+.small {
+  font-size: small;
+}
+
 .subtitle {
   font-weight: 600;
   font-size: small;
   color: slategray;
+}
+
+.accordion-button {
+  font-size: small !important;
 }
 
 @media (prefers-color-scheme: light) {
