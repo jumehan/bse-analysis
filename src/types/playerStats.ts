@@ -27,7 +27,7 @@ export interface PlayerStatsData {
     [k: string]: unknown;
   };
   game: {
-    id?: number;
+    id: number;
     [k: string]: unknown;
   };
   points?: number;
