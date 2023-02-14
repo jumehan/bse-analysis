@@ -36,8 +36,21 @@ h1 {
   line-height: 1.1;
 }
 
+h3 {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
 p {
   display: inline;
+}
+
+svg {
+  color: #535bf2;
+  stroke: #a8fc3a;
+  stroke-width: 1.1;
 }
 
 table {
@@ -49,22 +62,47 @@ th {
   text-transform: uppercase;
 }
 
+.accordion-button {
+  font-size: small !important;
+}
+
+.glossary {
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  column-count: 4;
+  column-gap: 20px;
+}
+
 .medium {
   font-weight: 600;
+  color: #242424;
+}
+
+.muted {
+  font-size: smaller;
+  color: grey;
+}
+
+.pagination{
+  font-weight: 700;
+  font-size: smaller;
+  color: white;
 }
 
 .small {
   font-size: small;
 }
 
+.smaller {
+  font-size: smaller;
+}
+
 .subtitle {
   font-weight: 600;
   font-size: small;
-  color: slategray;
-}
-
-.accordion-button {
-  font-size: small !important;
+  color: grey;
 }
 
 @media (prefers-color-scheme: light) {
