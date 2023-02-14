@@ -1,42 +1,38 @@
-import { Card, ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem } from "reactstrap";
 import { PlayerDetailsData } from "../../types/playerDetails";
 
 interface PlayerProfileListProps {
   player: PlayerDetailsData;
 }
 
+/** Construct a Player Profile ListComponent
+ * Display a player's bio details: height, weight, start and college information
+ * { PlayerProfile } -> { PlayerProfileList }
+ * @props player
+ * @returns styled List Component
+ */
 function PlayerProfileList({ player }: PlayerProfileListProps) {
   return (
-    <div className="col-8 mx-auto px-2">
-      <ListGroup horizontal className="w-100">
-        <ListGroupItem className="w-75 justify-content-between">
-          <p className="text-muted">Height: </p>
-          <p className="medium">
-            {player.height.feets}' {player.height.inches}"
-          </p>
-        </ListGroupItem>
-        <ListGroupItem className="w-75 justify-content-between">
-          <p className="text-muted">Weight: </p>
-          <p className="medium">{player.weight.pounds} lbs</p>
-        </ListGroupItem>
-        <ListGroupItem className="w-75 justify-content-between">
-          <p className="text-muted">Start: </p>
-          <p className="medium">{player.nba.start}</p>
-        </ListGroupItem>
-        <ListGroupItem className="w-100 justify-content-between">
-          <p className="text-muted">College: </p>
-          <p className="medium">{player.college}</p>
-        </ListGroupItem>
-      </ListGroup>
-      <Card className="my-3">
-        <>
-        {player.leagues.standard.jersey} //
-        {player.nba.pro} //
-        {player.leagues.standard.active} //
-        {player.leagues.standard.pos} //
-        </>
-      </Card>
-    </div>
+    <ListGroup horizontal style={{ marginBottom: "1.5rem" }}>
+      <ListGroupItem className="w-75 justify-content-between">
+        <p className="subtitle">Height: </p>
+        <p className="medium">
+          {player.height.feets}' {player.height.inches}"
+        </p>
+      </ListGroupItem>
+      <ListGroupItem className="w-75 justify-content-between">
+        <p className="subtitle">Weight: </p>
+        <p className="medium">{player.weight.pounds} lbs</p>
+      </ListGroupItem>
+      <ListGroupItem className="w-75 justify-content-between">
+        <p className="subtitle">Start: </p>
+        <p className="medium">{player.nba.start}</p>
+      </ListGroupItem>
+      <ListGroupItem className="w-100 justify-content-between">
+        <p className="subtitle">College: </p>
+        <p className="medium">{player.college}</p>
+      </ListGroupItem>
+    </ListGroup>
   );
 }
 

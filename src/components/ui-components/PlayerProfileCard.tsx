@@ -8,7 +8,8 @@ interface PlayerProfileProps {
 }
 
 /** Construct a Player Profile Card Component
- * 2/3 width of the page and display a user's name, age, and profile picture
+ * Display a player's name, age, and profile picture
+ * { PlayerProfile } -> { PlayerProfileCard }
  * @props player
  * @props id
  * @returns styled Card Component
@@ -17,19 +18,17 @@ function PlayerProfileCard({ player, id }: PlayerProfileProps) {
   const imgUrl = import.meta.env.VITE_NBA_PLAYER_IMG;
 
   return (
-    <div className="col-3 mx-auto px-2">
-      <Card style={{ width: "18rem" }}>
-        <img alt="player headshot" src={`${imgUrl}/${id}.png`} />
-        <CardBody>
-          <CardTitle tag="h5">
-            {player.firstname} {player.lastname}
-          </CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Birthdate: {player.birth.date} ({getAge(player.birth.date)})
-          </CardSubtitle>
-        </CardBody>
-      </Card>
-    </div>
+    <Card style={{ marginBottom: "1.5rem" }}>
+      <img alt="player headshot" src={`${imgUrl}/${id}.png`} />
+      <CardBody>
+        <CardTitle tag="h5">
+          {player.firstname} {player.lastname}
+        </CardTitle>
+        <CardSubtitle className="subtitle" tag="h6">
+          Birthdate: {player.birth.date} ({getAge(player.birth.date)})
+        </CardSubtitle>
+      </CardBody>
+    </Card>
   );
 }
 
