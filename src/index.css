@@ -23,6 +23,10 @@ a:hover {
   color: #535bf2;
 }
 
+body {
+  font-size: small;
+}
+
 div {
   float: center;
 }
@@ -36,8 +40,23 @@ p {
   display: inline;
 }
 
+table {
+  table-layout: fixed;
+  font-size: smaller;
+}
+
+th {
+  text-transform: uppercase;
+}
+
 .medium {
   font-weight: 600;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: small;
+  color: slategray;
 }
 
 @media (prefers-color-scheme: light) {
