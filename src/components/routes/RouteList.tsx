@@ -3,14 +3,14 @@ import PlayerProfile from "../../pages/PlayerProfile";
 
 /** RouteList component
  * Displays a list of routes
- *
- * @returns {Component} List of routes
+ * { App } -> { RouteList }
+ * @returns {JSX.Element} List of routes
  */
-function RouteList() {
+function RouteList(): JSX.Element {
   return (
     <Routes>
       <Route path="/:id" element={<PlayerProfile />} />
-      <Route path="/*" element={<Navigate to="/" />} />
+      <Route path="/*" element={<Navigate to="/265" />} />
     </Routes>
   );
 }
