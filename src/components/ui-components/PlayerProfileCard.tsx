@@ -19,7 +19,15 @@ function PlayerProfileCard({ player, id }: PlayerProfileProps) {
 
   return (
     <Card style={{ marginBottom: "1.5rem" }}>
-      <img alt="player headshot" src={`${imgUrl}/${id}.png`} />
+      {id.length ? (
+        <img alt="player headshot" src={`${imgUrl}/${id}.png`} />
+      ) : (
+        <img
+          alt="placeholder image"
+          src="https://picsum.photos/id/135/318/180?grayscale&blur=10"
+          width="100%"
+        />
+      )}
       <CardBody>
         <CardTitle tag="h5">
           {player.firstname} {player.lastname}
