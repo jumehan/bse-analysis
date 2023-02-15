@@ -36,9 +36,10 @@ export default function NavBar(): JSX.Element {
           style={{
             height: 32,
             width: 32,
+            marginRight: 10,
           }}
         />
-        NBA Data Analytics
+        Player Data Analytics
       </NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} aria-controls="navbar-navigation" />
       <Collapse isOpen={!collapsed} navbar>
