@@ -10,9 +10,10 @@ import PlayerTeamCard from "../components/ui-components/PlayerTeamCard";
 import { PlayerDetailsData } from "../types/playerDetails";
 import { PlayerStatsData } from "../types/playerStats";
 import { Row as R } from "react-table";
-import GlossaryList from "../components/ui-components/GlossaryList";
+import GlossaryList from "../components/layout/GlossaryListFooter";
 import SearchForm from "../components/ui-components/SearchForm";
 import GameDetailsCard from "../components/ui-components/GameDetailsCard";
+import LoadingSpinner from "../components/ui-components/extended/Spinner";
 
 interface PlayerProfile {
   details?: PlayerDetailsData;
@@ -61,7 +62,7 @@ function PlayerProfile() {
   };
 
   if (player.isLoading || !player.details || !player.stats) {
-    return <i>Loading...</i>;
+    return <LoadingSpinner/>
   }
 
   return (
