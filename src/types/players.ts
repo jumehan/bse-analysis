@@ -1,3 +1,5 @@
+import { PlayerDetailsData } from "./playerDetails";
+
 export interface Players {
   get?: string
   parameters?: {
@@ -6,8 +8,6 @@ export interface Players {
   }
   errors?: unknown[]
   results?: number
-  response?: {
-    [k: string]: unknown
-  }[]
+  response: PlayerDetailsData[];
   [k: string]: unknown
 }
