@@ -1,4 +1,4 @@
-import { Card, CardBody, CardSubtitle, Row, Col, CardText, ListGroup } from "reactstrap";
+import { Card, CardBody, CardSubtitle, Row, Col, CardText } from "reactstrap";
 import { PlayerDetailsData } from "../../types/playerDetails";
 import { PlayerStatsData } from "../../types/playerStats";
 
@@ -37,17 +37,21 @@ function PlayerTeamCard({ player, team }: PlayerTeamProps) {
           </Col>
           <div className="vr px-0"></div>
           <Col className="w-100 justify-content-between">
-            <img
-              style={{
-                width: "5rem",
-                position: "relative",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-              src={team.logo}
-              alt={team.nickname}
-            />
+            {team ? (
+              <img
+                style={{
+                  width: "5rem",
+                  position: "relative",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+                src={team.logo}
+                alt={team.nickname}
+              />
+            ) : (
+              "team unavailable"
+            )}
           </Col>
         </Row>
       </CardBody>
