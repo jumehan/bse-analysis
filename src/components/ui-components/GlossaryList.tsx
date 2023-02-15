@@ -6,12 +6,6 @@ function GlossaryList() {
       <h3>Glossary</h3>
       <List type="inline" className="glossary muted">
         <li>
-          <span className="medium">GP: </span>Games Played
-        </li>
-        <li>
-          <span className="medium">GS: </span>Games Started
-        </li>
-        <li>
           <span className="medium">MIN: </span>Minutes Per Game
         </li>
         <li>
