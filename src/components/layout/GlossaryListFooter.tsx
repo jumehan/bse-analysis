@@ -65,21 +65,9 @@ function GlossaryList() {
         <li>
           <span className="medium">FT%: </span>Free Throw Percentage
         </li>
-        {/* <li>
-          <span className="medium">2PM: </span>2-Point Field Goals Made per Game
-        </li>
         <li>
-          <span className="medium">2PA: </span>2-Point Field Goals Attempted per Game
+          <span className="medium">+/-: </span>Plus Minus
         </li>
-        <li>
-          <span className="medium">2P%: </span>2-Point Field Goal Percentage
-        </li>
-        <li>
-          <span className="medium">SC-EFF: </span>Scoring Efficiency
-        </li>
-        <li>
-          <span className="medium">SH-EFF: </span>Shooting Efficiency
-        </li> */}
       </List>
     </Row>
   );
