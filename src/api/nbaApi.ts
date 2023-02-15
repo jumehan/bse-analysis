@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GameDetails } from "../types/gameDetails";
 import { PlayerDetails } from "../types/playerDetails";
 import { Players } from "../types/players";
 import { PlayerStats } from "../types/playerStats";
@@ -31,12 +32,11 @@ class nbaApi {
   /** Get Request for Player details by id
    *
    * @param id Player ID = string number
-   *
    * @returns array of Player details object
    */
   static async getPlayerDetails(id: string): Promise<PlayerDetails> {
     const resp = await this.request("players/", {
-      id: id || "",
+      id: id,
     });
     console.debug("getPlayerDetails()", resp);
     return resp;
@@ -46,34 +46,40 @@ class nbaApi {
    *
    * @param id Player ID = string number
    * @param season Season ID =  string number
-   *
    * @returns array of Player stats object
    */
-  static async getPlayerStats(
-    id: string,
-    season: string
-  ): Promise<PlayerStats> {
+  static async getPlayerStats(id: string, season: string): Promise<PlayerStats> {
     const resp = await this.request("players/statistics", {
-      id: id || "",
-      season: season || "",
+      id: id,
+      season: season,
     });
     console.debug("getPlayerStats()", resp);
     return resp;
   }
 
-  /** Get Request to search for players by optional params: last name or team
+  /** Get Request to search for players by last name
    *
-   * @param search Player LastName (optional)
-   * @param team Team ID (optional)
-   *
+   * @param search Player LastName
    * @returns array of found Players object
    */
-  static async getPlayers(search: string, team: number): Promise<Players> {
+  static async getPlayers(search: string): Promise<Players> {
     const resp = await this.request("players/", {
-      search: search || "",
-      team: team || "",
+      search: search,
     });
     console.debug("getPlayers()", resp);
+    return resp;
+  }
+
+  /** Get Request to search for a Game by id
+   *
+   * @param id Game ID
+   * @returns GameDetails object
+   */
+  static async getGameDetails(id: string): Promise<GameDetails> {
+    const resp = await this.request("games/", {
+      id: id,
+    });
+    console.debug("getGameDetails()", resp);
     return resp;
   }
 }
