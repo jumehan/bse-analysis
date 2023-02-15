@@ -9,6 +9,7 @@ import {
 } from "react-table";
 import { Button, Col, Input, Row, Table } from "reactstrap";
 import { PlayerStatsData } from "../../types/playerStats";
+import { CollapseIcon, ExpandIcon } from "./extended/Chevron";
 import { SortDown, SortUp, SortUpDown } from "./extended/Sort";
 
 interface PlayerStatsTableProps {
@@ -23,7 +24,7 @@ interface RowProp {
 
 /** Table component that displays player shooting stats
  * { App } -> { NavBar, RouteList } -> { PlayerProfile } -> { PlayerShootingStatsTable }
- * useMemo for optimization -> colums
+ *
  * @param {PlayerStatsTableProps} { data, season, renderRowSubComponent }
  * @returns styled, paginated, sortable and expandable table
  */
@@ -35,7 +36,9 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
         id: "expander", // id is required
         disableSortBy: true,
         Cell: ({ row }: RowProp) => (
-          <span {...row.getToggleRowExpandedProps()}>{row.isExpanded ? "👇" : "👉"}</span>
+          <span {...row.getToggleRowExpandedProps()}>
+            {row.isExpanded ? <CollapseIcon /> : <ExpandIcon />}
+          </span>
         ),
       },
       { Header: "pts ", accessor: "points" },
@@ -50,10 +53,19 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
       { Header: "3pm ", accessor: "tpm" },
       { Header: "3pa ", accessor: "tpa" },
       { Header: "3p% ", accessor: "tpp" },
+      { Header: "or ", accessor: "offReb" },
+      { Header: "dr ", accessor: "defReb" },
+      { Header: "reb ", accessor: "totReb" },
+      { Header: "ast ", accessor: "assists" },
+      { Header: "pf ", accessor: "pFouls" },
+      { Header: "stl ", accessor: "steals" },
+      { Header: "to ", accessor: "turnovers" },
+      { Header: "blk ", accessor: "blocks" },
     ],
     []
   );
 
+  /** Custom props and hooks for react-table */
   const {
     getTableProps,
     getTableBodyProps,
@@ -96,7 +108,18 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
 
   return (
     <Fragment>
-      <h3>Shooting stats per Game ({season})</h3>
+      <h3>
+        Shooting stats per Game ({season}-{Number(season) + 1})
+      </h3>
+      <details>
+        <summary>more info</summary>
+        <p className="smaller">
+          <i>
+            Games are pre-sorted, most recent games appearing first. Click on the hand icon to get
+            game details. Stats can be sorted by clicking the arrow icon next to each stat.
+          </i>
+        </p>
+      </details>
       <Table size="sm" hover striped {...getTableProps()} title="Shooting stats per Game">
         <caption>Player shooting stats per Game</caption>
         <thead>
@@ -132,22 +155,28 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           })}
         </tbody>
       </Table>
-      <Row style={{ maxWidth: 1000, textAlign: "center" }} className="pb-3">
-        <Col md={3}>
-          <Button size="sm" color="primary" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+      <Row style={{ textAlign: "center" }} className="pb-3">
+        <Col xs={3} sm={3} md={3}>
+          <Button
+            className="mx-1 px-1"
+            size="sm"
+            color="primary"
+            onClick={() => gotoPage(0)}
+            disabled={!canPreviousPage}
+          >
             {<span className="pagination">{"<<"}</span>}
           </Button>
           <Button size="sm" color="primary" onClick={previousPage} disabled={!canPreviousPage}>
             {<span className="pagination">{"<"}</span>}
           </Button>
         </Col>
-        <Col md={2} style={{ marginTop: 5 }} className="smaller">
+        <Col xs={2} sm={2} md={2} style={{ marginTop: 5 }} className="smaller">
           Page{" "}
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>
         </Col>
-        <Col md={2}>
+        <Col xs={1} sm={1} md={1}>
           <Input
             className="smaller"
             bsSize="sm"
@@ -159,10 +188,11 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
             onChange={onChangeInInput}
           />
         </Col>
-        <Col md={2}>
+        <Col xs={3} sm={3} md={2}>
           <Input
             className="smaller"
             bsSize="sm"
+            min={1}
             type="select"
             value={pageSize}
             onChange={onChangeInSelect}
@@ -174,11 +204,12 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
             ))}
           </Input>
         </Col>
-        <Col md={3}>
+        <Col xs={3} sm={3} md={3}>
           <Button size="sm" color="primary" onClick={nextPage} disabled={!canNextPage}>
             {<span className="pagination">{">"}</span>}
           </Button>
           <Button
+            className="mx-1 px-1"
             size="sm"
             color="primary"
             onClick={() => gotoPage(pageCount - 1)}
@@ -188,39 +219,6 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           </Button>
         </Col>
       </Row>
-      {/*
-      <Table size="sm">
-        <thead>
-          <tr style={{ fontSize: "x-small" }}>
-            <th>#</th>
-            <th>offReb</th>
-            <th>defReb</th>
-            <th>totReb</th>
-            <th>assists</th>
-            <th>pFouls</th>
-            <th>steals</th>
-            <th>turnovers</th>
-            <th>blocks</th>
-            <th>plusMinus</th>”
-          </tr>
-        </thead>
-        <tbody>
-          {stats.map((stat) => (
-            <tr key={stat.game.id + "T2"}>
-              <th scope="row">{stat.game.id}</th>
-              <td>{stat.offReb}</td>
-              <td>{stat.defReb}</td>
-              <td>{stat.totReb}</td>
-              <td>{stat.assists}</td>
-              <td>{stat.pFouls}</td>
-              <td>{stat.steals}</td>
-              <td>{stat.turnovers}</td>
-              <td>{stat.blocks}</td>
-              <td>{stat.plusMinus}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table> */}
     </Fragment>
   );
 }
