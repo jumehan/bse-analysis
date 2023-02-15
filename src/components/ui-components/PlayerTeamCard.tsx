@@ -56,38 +56,6 @@ function PlayerTeamCard({ player, team }: PlayerTeamProps) {
         </Row>
       </CardBody>
     </Card>
-    //   <Card style={{ width: "18rem", marginBottom: "1.5rem" }}>
-    //   <CardBody>
-    //     <Row className="w-100">
-    //       <Col className="w-100 justify-content-between">
-    //         <CardSubtitle className="subtitle" tag="h6">
-    //           TEAM
-    //         </CardSubtitle>
-    //         <CardText className="medium">{team.name}</CardText>
-    //         <hr></hr>
-    //         <CardSubtitle className="subtitle" tag="h6">
-    //           JERSEY | POS
-    //         </CardSubtitle>
-    //         <CardText className="medium">
-    //           {player.leagues.standard.jersey} {player.leagues.standard.pos}
-    //         </CardText>
-    //       </Col>
-    //       <Col className="w-100 justify-content-between">
-    //         <img
-    //           style={{
-    //             width: "3.5rem",
-    //             position: "relative",
-    //             top: "50%",
-    //             left: "50%",
-    //             transform: "translate(-50%, -50%)",
-    //           }}
-    //           src={team.logo}
-    //           alt={team.nickname}
-    //         />
-    //       </Col>
-    //     </Row>
-    //   </CardBody>
-    // </Card>
   );
 }
 

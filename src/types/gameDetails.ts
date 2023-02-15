@@ -61,7 +61,7 @@ export interface GameDetailsData {
     [k: string]: unknown;
   };
   scores?: {
-    visitors?: {
+    visitors: {
       win?: number;
       loss?: number;
       series?: {
@@ -70,12 +70,12 @@ export interface GameDetailsData {
         [k: string]: unknown;
       };
       linescore?: string[];
-      points?: number;
+      points: number;
       [k: string]: unknown;
     };
-    home?: {
-      win?: number;
-      loss?: number;
+    home: {
+      win: number;
+      loss: number;
       series?: {
         win?: number;
         loss?: number;
