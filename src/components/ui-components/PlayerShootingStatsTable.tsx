@@ -61,6 +61,7 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
       { Header: "stl ", accessor: "steals" },
       { Header: "to ", accessor: "turnovers" },
       { Header: "blk ", accessor: "blocks" },
+      { Header: "+/- ", accessor: "plusMinus", sortType: "basic" },
     ],
     []
   );
