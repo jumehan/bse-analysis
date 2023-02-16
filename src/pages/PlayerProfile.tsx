@@ -22,7 +22,11 @@ interface PlayerProfile {
   isLoading: boolean;
 }
 
-/**  */
+/** Player Profile Page
+ * Displays the player profile incl. bio, stats, data table, etc.
+ * State: stores player data { details, stats, personId, isLoading }
+ * { App } -> { RouteList } -> { ProfilePage }
+ */
 function PlayerProfile() {
   const [player, setPlayer] = useState<PlayerProfile>({
     details: undefined,
@@ -62,14 +66,17 @@ function PlayerProfile() {
   };
 
   if (player.isLoading || !player.details || !player.stats) {
-    return <LoadingSpinner/>
+    return <LoadingSpinner />;
   }
 
   return (
     <React.Fragment>
       <Row className="align-items-start">
         <Col sm="4" className="px-2">
-          <PlayerProfileCard player={player.details} id={player.personId || ""} />
+          <PlayerProfileCard
+            player={player.details}
+            id={player.personId || ""}
+          />
         </Col>
         <Col className="px-2" sm="8">
           <SearchForm />

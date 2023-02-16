@@ -15,7 +15,7 @@ interface PlayerTeamProps {
  */
 function PlayerTeamCard({ player, team }: PlayerTeamProps) {
   return (
-    <Card style={{ marginBottom: "1.5rem" }}>
+    <Card style={{ marginBottom: "1rem" }}>
       <CardBody>
         <Row className="w-100">
           <Col className="w-100 justify-content-between">
