@@ -44,9 +44,10 @@ function PlayerProfile() {
       async function fetchPlayer() {
         const playerDetails = await nbaApi.getPlayerDetails(id || "2855");
         const playerStats = await nbaApi.getPlayerStats(id || "2855", season);
-        const personId = nbaData.getPlayerId(
+        const personId = nbaData.getPlayerIdByName(
           playerDetails?.response[0].firstname,
-          playerDetails?.response[0].lastname
+          playerDetails?.response[0].lastname,
+          playerDetails?.response[0].birth.date
         );
         setPlayer({
           details: playerDetails.response[0],
@@ -85,11 +86,11 @@ function PlayerProfile() {
           <PlayerTeamCard team={player.stats[0].team} player={player.details} />
           <PlayerProfileList player={player.details} />
         </Col>
-        <Row >
-          <Col md={6}>
+        <Row>
+          <Col lg={6}>
             <PlayerStatsChart data={player.stats} />
           </Col>
-          <Col md={6}>
+          <Col lg={6}>
             <PlayerStatsPercentageChart data={player.stats} />
           </Col>
         </Row>

@@ -42,7 +42,7 @@ export interface GameDetailsData {
     [k: string]: unknown;
   };
   teams?: {
-    visitors?: {
+    visitors: {
       id?: number;
       name?: string;
       nickname?: string;
@@ -61,7 +61,7 @@ export interface GameDetailsData {
     [k: string]: unknown;
   };
   scores?: {
-    visitors: {
+    visitors?: {
       win?: number;
       loss?: number;
       series?: {
@@ -73,7 +73,7 @@ export interface GameDetailsData {
       points: number;
       [k: string]: unknown;
     };
-    home: {
+    home?: {
       win: number;
       loss: number;
       series?: {

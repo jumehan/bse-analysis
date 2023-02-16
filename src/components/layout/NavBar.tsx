@@ -20,7 +20,8 @@ import { eastConference, westConference } from "../../data/nbaTeams";
 
 /** React Navigation Bar Component
  * Conains Logo and Header
- * Dropdown menu displays list generated from `EastConfTeams and `WestConfTeams`
+ * Dropdown menu displays list generated from `EasternConferenceList and `WesternConferenceList`
+ * TODO: this navbar is a placeholder and should link to other pages in future versions
  * @returns {JSX.Element} containing the navbar elements
  */
 export default function NavBar(): JSX.Element {
@@ -51,8 +52,8 @@ export default function NavBar(): JSX.Element {
             </DropdownToggle>
             <DropdownMenu end>
               <UncontrolledAccordion flush defaultOpen="east" className="small">
-                <EastConfTeams />
-                <WestConfTeams />
+                <EasternConferenceList />
+                <WesternConferenceList />
               </UncontrolledAccordion>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -65,12 +66,13 @@ export default function NavBar(): JSX.Element {
 /** React Component that displays a list of teams
  * @returns {JSX.Element} list of teams in the Eastern Conference to display in dropdown menu
  */
-const EastConfTeams = (): JSX.Element => {
+const EasternConferenceList = (): JSX.Element => {
   return (
-    <AccordionItem style={{width:"12rem"}}>
+    <AccordionItem style={{ width: "12rem" }}>
       <AccordionHeader targetId="east">Eastern Conference</AccordionHeader>
       <AccordionBody accordionId="east">
         {eastConference.map((team) => (
+          // TODO: Currently link to "", future versions should link a route
           <DropdownItem key={team.code} tag={Link} to="">
             {team.name}
           </DropdownItem>
@@ -83,7 +85,7 @@ const EastConfTeams = (): JSX.Element => {
 /** React Component that displays a list of teams
  * @returns {JSX.Element} list of teams in the Eastern Conference to display in dropdown menu
  */
-const WestConfTeams = (): JSX.Element => {
+const WesternConferenceList = (): JSX.Element => {
   return (
     <AccordionItem>
       <AccordionHeader targetId="west">Western Conference</AccordionHeader>

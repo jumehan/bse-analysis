@@ -1,73 +1,47 @@
 import { List, Row } from "reactstrap";
 
+/** Glossary List Footer Component
+ * { App } -> { RouteList } -> { PlayerProfile } -> { GlossaryList }
+ * Displays a list of NBA stat abbreviations
+ * @returns styled Component
+ */
 function GlossaryList() {
+  const abbreviations = [
+    { abbr: "MIN", description: "Minutes Per Game" },
+    { abbr: "PTS", description: "Points Per Game" },
+    { abbr: "OR", description: "Offensive Rebounds Per Game" },
+    { abbr: "DR", description: "Defensive Rebounds Per Game" },
+    { abbr: "REB", description: "Rebounds Per Game" },
+    { abbr: "AST", description: "Assists Per Game" },
+    { abbr: "STL", description: "Steals Per Game" },
+    { abbr: "BLK", description: "Blocks Per Game" },
+    { abbr: "TO", description: "Turnovers Per Game" },
+    { abbr: "PF", description: "Fouls Per Game" },
+    { abbr: "AST/TO", description: "Assist To Turnover Ratio" },
+    { abbr: "FGM", description: "Average Field Goals Made" },
+    { abbr: "FGA", description: "Average Field Goals Attempted" },
+    { abbr: "FG%", description: "Field Goal Percentage" },
+    { abbr: "3PM", description: "Average 3-Point Field Goals Made" },
+    { abbr: "3PA", description: "Average 3-Point Field Goals Attempted" },
+    { abbr: "3P%", description: "3-Point Field Goal Percentage" },
+    { abbr: "FTM", description: "Average Free Throws Made" },
+    { abbr: "FTA", description: "Average Free Throws Attempted" },
+    { abbr: "FT%", description: "Free Throw Percentage" },
+    { abbr: "+/-", description: "Plus Minus" },
+  ];
+
   return (
     <Row>
       <h3>Glossary</h3>
       <List type="inline" className="glossary muted">
-        <li>
-          <span className="medium">MIN: </span>Minutes Per Game
-        </li>
-        <li>
-          <span className="medium">PTS: </span>Points Per Game
-        </li>
-        <li>
-          <span className="medium">OR: </span>Offensive Rebounds Per Game
-        </li>
-        <li>
-          <span className="medium">DR: </span>Defensive Rebounds Per Game
-        </li>
-        <li>
-          <span className="medium">REB: </span>Rebounds Per Game
-        </li>
-        <li>
-          <span className="medium">AST: </span>Assists Per Game
-        </li>
-        <li>
-          <span className="medium">STL: </span>Steals Per Game
-        </li>
-        <li>
-          <span className="medium">BLK: </span>Blocks Per Game
-        </li>
-        <li>
-          <span className="medium">TO: </span>Turnovers Per Game
-        </li>
-        <li>
-          <span className="medium">PF: </span>Fouls Per Game
-        </li>
-        <li>
-          <span className="medium">AST/TO: </span>Assist To Turnover Ratio
-        </li>
-        <li>
-          <span className="medium">FGM: </span>Average Field Goals Made
-        </li>
-        <li>
-          <span className="medium">FGA: </span>Average Field Goals Attempted
-        </li>
-        <li>
-          <span className="medium">FG%: </span>Field Goal Percentage
-        </li>
-        <li>
-          <span className="medium">3PM: </span>Average 3-Point Field Goals Made
-        </li>
-        <li>
-          <span className="medium">3PA: </span>Average 3-Point Field Goals Attempted
-        </li>
-        <li>
-          <span className="medium">3P%: </span>3-Point Field Goal Percentage
-        </li>
-        <li>
-          <span className="medium">FTM: </span>Average Free Throws Made
-        </li>
-        <li>
-          <span className="medium">FTA: </span>Average Free Throws Attempted
-        </li>
-        <li>
-          <span className="medium">FT%: </span>Free Throw Percentage
-        </li>
-        <li>
-          <span className="medium">+/-: </span>Plus Minus
-        </li>
+        {abbreviations.map(({ abbr, description }) => (
+          <li key={abbr}>
+            <abbr title={description} className="medium">
+              {abbr}:{" "}
+            </abbr>
+            {description}
+          </li>
+        ))}
       </List>
     </Row>
   );

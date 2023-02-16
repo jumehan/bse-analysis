@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import {
   LineChart,
   Line,
@@ -22,15 +21,16 @@ interface DataProps {
 function PlayerStatsPercentageChart({ data }: DataProps) {
   return (
     <div style={{ textAlign: "center" }}>
-      <h3
+      <h4
         style={{
           display: "inline-block",
           margin: "0 auto",
           marginBottom: "2",
         }}
       >
-        3P%, FG% and FT%
-      </h3> <br />
+        3P% (tpp), FG% (fgp) and FT% (ftp)
+      </h4>
+      <br />
       <div className="smaller medium">
         <LineChart
           width={450}
@@ -44,18 +44,18 @@ function PlayerStatsPercentageChart({ data }: DataProps) {
           }}
         >
           <CartesianGrid strokeDasharray="1 5" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis />
+          <YAxis domain={[0, 100]}/>
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="tpp" stroke="#8884d8" />
           <Line
             type="monotone"
-            dataKey="fgp"
-            stroke="#82ca9d"
+            dataKey="ftp"
+            stroke="#72C2C9"
             activeDot={{ r: 5 }}
           />
-          <Line type="monotone" dataKey="ftp" stroke="#FFAC1C" />
+          <Line type="monotone" dataKey="fgp" stroke="#2963A2" />
+          <Line type="monotone" dataKey="tpp" stroke="#9FA65A" />
         </LineChart>
       </div>
     </div>

@@ -41,6 +41,13 @@ h3 {
   line-height: 1.1;
   text-transform: uppercase;
 }
+h4 {
+  font-size: 0.75em;
+  font-weight: 800;
+  line-height: 1.1;
+  color: grey;
+  text-transform: uppercase;
+}
 
 p {
   display: inline;
@@ -54,8 +61,6 @@ summary {
 }
 
 svg {
-  color: #0a53be;
-  stroke: #6ec101;
   stroke-width: 1.5;
 }
 
@@ -72,6 +77,14 @@ th {
 
 .accordion-button {
   font-size: small !important;
+}
+
+.game-logo {
+  width: 1.5rem;
+  position: relative;
+  float: right;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .glossary {

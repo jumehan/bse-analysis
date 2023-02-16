@@ -11,11 +11,11 @@ interface PlayerProfileProps {
  * Display a player's name, age, and profile picture
  * { PlayerProfile } -> { PlayerProfileCard }
  * @props player
- * @props id
+ * @props id (fallback to defaul value prn to prevent component break)
  * @returns styled Card Component
  */
-function PlayerProfileCard({ player, id }: PlayerProfileProps) {
-  const imgUrl = import.meta.env.VITE_NBA_PLAYER_IMG;
+function PlayerProfileCard({ player, id = "265" }: PlayerProfileProps) {
+  const imgUrl: string = import.meta.env.VITE_NBA_PLAYER_IMG;
 
   return (
     <Card style={{ marginBottom: "1.5rem" }}>

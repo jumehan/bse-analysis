@@ -1,11 +1,11 @@
 import {
-  LineChart,
-  Line,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
 } from "recharts";
 import { PlayerStatsData } from "../../types/playerStats";
 
@@ -13,10 +13,15 @@ interface DataProps {
   data: PlayerStatsData[];
 }
 
+/** React Component
+ * Displays chart with AST to TO data for a player over a season
+ * @prop data: player stats data
+ * { App } -> { RouteList } -> { PlayerProfile } -> { PlayerStatsChart }
+ */
 function PlayerStatsChart({ data }: DataProps) {
   return (
     <div style={{ textAlign: "center" }}>
-      <h3
+      <h4
         style={{
           display: "inline-block",
           margin: "0 auto",
@@ -24,33 +29,26 @@ function PlayerStatsChart({ data }: DataProps) {
         }}
       >
         AST / TO
-      </h3>{" "}
-      <br />{" "}
+      </h4>
+      <br />
       <div className="smaller medium">
-        <LineChart
+        <BarChart
           width={450}
           height={200}
           data={data}
           margin={{
             top: 5,
-            right: 5,
-            left: 5,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="1 5" />
-          <XAxis dataKey="name" />
+          <XAxis />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="assists"
-            stroke="#8884d8"
-            activeDot={{ r: 5 }}
-          />
-          <Line type="monotone" dataKey="turnovers" stroke="#82ca9d" />
-        </LineChart>
+          <Bar dataKey="assists" fill="#2963A2" />
+          <Bar dataKey="turnovers" fill="#4CAABC" />
+        </BarChart>
       </div>
     </div>
   );

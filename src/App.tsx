@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Container } from "reactstrap";
 import NavBar from "./components/layout/NavBar";
-import RouteList from "./components/routes/RouteList";
+import AppRoutes from "./components/routes/AppRoutes";
 
 /** React App Component
  * { App } -> { NavBar } { RouteList }
@@ -12,7 +12,7 @@ function App(): JSX.Element {
     <Container className="my-4">
       <BrowserRouter>
         <NavBar />
-        <RouteList />
+        <AppRoutes />
       </BrowserRouter>
     </Container>
   );
