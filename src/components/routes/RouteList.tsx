@@ -1,5 +1,8 @@
+import LoadingSpinner from "../../components/ui-components/extended/Spinner";
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import PlayerProfile from "../../pages/PlayerProfile";
+// import PlayerProfile from "../../pages/PlayerProfile";
+const PlayerProfile = lazy(() => import("../../pages/PlayerProfile"));
 
 /** RouteList component
  * Displays a list of routes
@@ -8,10 +11,12 @@ import PlayerProfile from "../../pages/PlayerProfile";
  */
 function RouteList(): JSX.Element {
   return (
-    <Routes>
-      <Route path="/:id" element={<PlayerProfile />} />
-      <Route path="/*" element={<Navigate to="/265" />} />
-    </Routes>
+    <Suspense fallback={<LoadingSpinner />}>
+      <Routes>
+        <Route path="/:id" element={<PlayerProfile />} />
+        <Route path="/*" element={<Navigate to="/265" />} />
+      </Routes>
+    </Suspense>
   );
 }
 
