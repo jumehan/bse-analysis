@@ -1,6 +1,6 @@
 import { debounce } from "lodash";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { FormGroup, Input, Label, ListGroupItem } from "reactstrap";
+import { FormGroup, Input, Label, ListGroup, ListGroupItem } from "reactstrap";
 import nbaApi from "../../api/nbaApi";
 
 interface SearchResults {
@@ -20,8 +20,9 @@ function SearchForm() {
   const debouncedSearch = useRef(
     debounce(async (name) => {
       const results = await search(name);
+      const players = results.filter(player => player.nba.pro !== 0)
       setPlayerList(
-        results.map((player) => ({
+        players.map((player) => ({
           id: player.id,
           firstname: player.firstname,
           lastname: player.lastname,
@@ -54,13 +55,13 @@ function SearchForm() {
         type="search"
         onChange={handleChange}
       />
-      <ul className="glossary py-2">
+      <ListGroup className="glossary py-2">
         {playerList.map((player) => (
           <ListGroupItem key={player.id} action href={`${player.id}`} tag="a">
             {player.firstname} {player.lastname}
           </ListGroupItem>
         ))}
-      </ul>
+      </ListGroup>
     </FormGroup>
   );
 }
