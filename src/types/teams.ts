@@ -12,11 +12,11 @@ export interface Team {
           conference: string;
           division: string;
       };
-      utah: {
+      utah?: {
         conference: string;
         division: string;
       };
-      sacramento: {
+      sacramento?: {
         conference: string;
         division: string;
       };
