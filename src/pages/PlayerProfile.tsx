@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Row as R } from "react-table";
 import { Col, Row } from "reactstrap";
 import nbaApi from "../api/nbaApi";
 import nbaData from "../api/nbaData";
+import GlossaryList from "../components/layout/GlossaryListFooter";
+import LoadingSpinner from "../components/ui-components/extended/Spinner";
+import GameDetailsCard from "../components/ui-components/GameDetailsCard";
 import PlayerProfileCard from "../components/ui-components/PlayerProfileCard";
 import PlayerProfileList from "../components/ui-components/PlayerProfileList";
 import PlayerShootingStatsTable from "../components/ui-components/PlayerShootingStatsTable";
+import PlayerStatsChart from "../components/ui-components/PlayerStatsChart";
+import PlayerStatsPercentageChart from "../components/ui-components/PlayerStatsPercentageChart";
 import PlayerTeamCard from "../components/ui-components/PlayerTeamCard";
+import SearchForm from "../components/ui-components/SearchForm";
 import { PlayerDetailsData } from "../types/playerDetails";
 import { PlayerStatsData } from "../types/playerStats";
-import { Row as R } from "react-table";
-import GlossaryList from "../components/layout/GlossaryListFooter";
-import SearchForm from "../components/ui-components/SearchForm";
-import GameDetailsCard from "../components/ui-components/GameDetailsCard";
-import LoadingSpinner from "../components/ui-components/extended/Spinner";
 
 interface PlayerProfile {
   details?: PlayerDetailsData;
@@ -83,6 +85,14 @@ function PlayerProfile() {
           <PlayerTeamCard team={player.stats[0].team} player={player.details} />
           <PlayerProfileList player={player.details} />
         </Col>
+        <Row >
+          <Col md={6}>
+            <PlayerStatsChart data={player.stats} />
+          </Col>
+          <Col md={6}>
+            <PlayerStatsPercentageChart data={player.stats} />
+          </Col>
+        </Row>
         <PlayerShootingStatsTable
           data={player.stats}
           season={season}
