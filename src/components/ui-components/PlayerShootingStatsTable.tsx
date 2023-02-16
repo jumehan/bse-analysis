@@ -121,7 +121,8 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           </i>
         </p>
       </details>
-      <Table size="sm" hover striped {...getTableProps()} title="Shooting stats per Game">
+      <div>
+      <Table responsive size="sm" hover striped {...getTableProps()} title="Shooting stats per Game">
         <caption>Player shooting stats per Game</caption>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -156,6 +157,7 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           })}
         </tbody>
       </Table>
+      </div>
       <Row style={{ textAlign: "center" }} className="pb-3">
         <Col xs={3} sm={3} md={3}>
           <Button

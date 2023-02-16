@@ -49,7 +49,7 @@ p {
 summary {
   font-weight: 600;
   font-size: smaller;
-  color:#0b5ed7;
+  color: #0b5ed7;
   text-transform: uppercase;
 }
 
@@ -61,11 +61,13 @@ svg {
 
 table {
   table-layout: fixed;
+  width: 100%;
   font-size: smaller;
 }
 
 th {
   text-transform: uppercase;
+  font-size: xx-small;
 }
 
 .accordion-button {
@@ -96,7 +98,7 @@ th {
   font-weight: 800;
 }
 
-.pagination{
+.pagination {
   font-weight: 700;
   font-size: smaller;
   color: white;
