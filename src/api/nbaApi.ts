@@ -48,7 +48,10 @@ class nbaApi {
    * @param season Season ID =  string number
    * @returns array of Player stats object
    */
-  static async getPlayerStats(id: string, season: string): Promise<PlayerStats> {
+  static async getPlayerStats(
+    id: string,
+    season: string
+  ): Promise<PlayerStats> {
     const resp = await this.request("players/statistics", {
       id: id,
       season: season,
@@ -67,6 +70,21 @@ class nbaApi {
       search: search,
     });
     console.debug("getPlayers()", resp);
+    return resp;
+  }
+
+  /** Get Request to search for players by last name
+   *
+   * @param team team id, ex "2" for Boston Celtics
+   * @param season default "2022"
+   * @returns array of Players object
+   */
+  static async getPlayersByTeam(team: number): Promise<Players> {
+    const resp = await this.request("players/", {
+      team: team,
+      season: "2022", // default to most recent season 22-23 for demo purposes
+    });
+    console.debug("getPlayersByTeam()", resp);
     return resp;
   }
 

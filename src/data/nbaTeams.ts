@@ -1,5 +1,7 @@
  /****************************************** | NBA TEAMS DATA BY CONFERENCE | */
 
+import { Team } from "../types/teams";
+
 /** teams in the NBA Eastern Conference
  * [ { team} , ...]
  * team: {
@@ -7,7 +9,7 @@
  * }
  * Notes: reduce API calls for relatively static data
  */
-export const eastConference = [
+export const eastConference: Team[] = [
   {
     id: 1,
     name: "Atlanta Hawks",
