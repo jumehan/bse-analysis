@@ -25,7 +25,7 @@ Search for a player by typing his last name, for example:
 #### Player Statistics
 Player stats are displayed per game, from most recent to oldest. All stats can be sorted so that you can easily compare and find lows and highs for each.
 
-![screen-find-player-name.png](screenshots/sort-player-stats.mp4)
+[![sort-player-stats.mp4](screenshots/sort-player-stats.mp4)](screenshots/sort-player-stats.mp4)
 
 #### Game Details
 Clicking on rows in the player stats table will display additional information on the game, including date, teams, scores and line scores:
@@ -57,5 +57,5 @@ Additional features to work on if there was more time or resources
 
 In the project directory, run:
 
-`npm install`
-`npm run dev`
+- `npm install`
+- `npm run dev`
