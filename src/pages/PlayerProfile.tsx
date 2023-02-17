@@ -11,13 +11,25 @@ import { PlayerDetailsData } from "../types/playerDetails";
 import { PlayerStatsData } from "../types/playerStats";
 
 // import components using lazy
-const PlayerProfileCard = lazy(() => import("../components/ui-components/PlayerProfileCard"));
+const PlayerProfileCard = lazy(
+  () => import("../components/ui-components/PlayerProfileCard")
+);
 const SearchForm = lazy(() => import("../components/ui-components/SearchForm"));
-const PlayerTeamCard = lazy(() => import("../components/ui-components/PlayerTeamCard"));
-const PlayerProfileList = lazy(() => import("../components/ui-components/PlayerProfileList"));
-const PlayerStatsChart = lazy(() => import("../components/ui-components/PlayerStatsChart"));
-const PlayerStatsPercentageChart = lazy(() => import("../components/ui-components/PlayerStatsPercentageChart"));
-const PlayerShootingStatsTable = lazy(() => import("../components/ui-components/PlayerShootingStatsTable"));
+const PlayerTeamCard = lazy(
+  () => import("../components/ui-components/PlayerTeamCard")
+);
+const PlayerProfileList = lazy(
+  () => import("../components/ui-components/PlayerProfileList")
+);
+const PlayerStatsChart = lazy(
+  () => import("../components/ui-components/PlayerStatsChart")
+);
+const PlayerStatsPercentageChart = lazy(
+  () => import("../components/ui-components/PlayerStatsPercentageChart")
+);
+const PlayerShootingStatsTable = lazy(
+  () => import("../components/ui-components/PlayerShootingStatsTable")
+);
 
 const DEFAULT_PLAYER_ID = "153";
 const SEASON = "2022"; // hardcoded, future versions could change
@@ -86,46 +98,49 @@ function PlayerProfile() {
   };
 
   // TODO: handle error more elegantly in future versions
-  if (error || !player.details || !player.stats) {
+  if (error) {
     return <div>"Failed to fetch player data"</div>;
   }
 
-  if (player.isLoading) {
+  if (player.isLoading || !player.details || !player.stats) {
     return <LoadingSpinner />;
   }
 
   return (
     <Suspense fallback={<LoadingSpinner />}>
-    <React.Fragment>
-      <Row className="align-items-start">
-        <Col sm="4" className="px-2">
-          <PlayerProfileCard
-            player={player.details}
-            id={player.personId || ""}
+      <React.Fragment>
+        <Row className="align-items-start">
+          <Col sm="4" className="px-2">
+            <PlayerProfileCard
+              player={player.details}
+              id={player.personId || ""}
+            />
+          </Col>
+          <Col className="px-2" sm="8">
+            <SearchForm />
+            <PlayerTeamCard
+              team={player.stats[0].team}
+              player={player.details}
+            />
+            <PlayerProfileList player={player.details} />
+          </Col>
+          <Row>
+            <Col lg={6}>
+              <PlayerStatsChart data={player.stats} />
+            </Col>
+            <Col lg={6}>
+              <PlayerStatsPercentageChart data={player.stats} />
+            </Col>
+          </Row>
+          <PlayerShootingStatsTable
+            data={player.stats}
+            season={season}
+            renderRowSubComponent={renderRowSubComponent}
           />
-        </Col>
-        <Col className="px-2" sm="8">
-          <SearchForm />
-          <PlayerTeamCard team={player.stats[0].team} player={player.details} />
-          <PlayerProfileList player={player.details} />
-        </Col>
-        <Row>
-          <Col lg={6}>
-            <PlayerStatsChart data={player.stats} />
-          </Col>
-          <Col lg={6}>
-            <PlayerStatsPercentageChart data={player.stats} />
-          </Col>
         </Row>
-        <PlayerShootingStatsTable
-          data={player.stats}
-          season={season}
-          renderRowSubComponent={renderRowSubComponent}
-        />
-      </Row>
-      <hr />
-      <GlossaryList />
-    </React.Fragment>
+        <hr />
+        <GlossaryList />
+      </React.Fragment>
     </Suspense>
   );
 }
