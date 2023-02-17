@@ -9,18 +9,26 @@ interface SearchResults {
   lastname: string;
 }
 
+/** Search Form Component
+ * Handles input changes and searches for results matching user input
+ * Renders list of results if found
+ * Use lodash debounce to delay the search to avoid unnecessary API calls
+ * { App } -> { AppList } -> { PlayerProfile } -> { SearchForm }
+ *
+ * @returns styled Form Component
+ */
 function SearchForm() {
   const [playerList, setPlayerList] = useState<Array<SearchResults>>([]);
 
   async function search(name: string) {
     const resp = await nbaApi.getPlayers(name);
-    return resp.response;
+    // filter out inactive players
+    return resp.response.filter((player) => player.nba.pro !== 0);
   }
 
   const debouncedSearch = useRef(
     debounce(async (name) => {
-      const results = await search(name);
-      const players = results.filter(player => player.nba.pro !== 0)
+      const players = await search(name);
       setPlayerList(
         players.map((player) => ({
           id: player.id,
@@ -37,8 +45,7 @@ function SearchForm() {
     };
   }, [debouncedSearch]);
 
-  /** Event Handler
-   * Ensure that the value is not empty before passing it to the search function */
+  /** Ensure that the value is not empty before passing it to the search function */
   async function handleChange(e: ChangeEvent<HTMLInputElement>) {
     if (e.target.value.length > 0) debouncedSearch(e.target.value);
   }

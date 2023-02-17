@@ -79,6 +79,14 @@ th {
   font-size: small !important;
 }
 
+.chart-container {
+  text-align: center;
+}
+.chart-title {
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .game-logo {
   width: 1.5rem;
   position: relative;

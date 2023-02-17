@@ -20,18 +20,10 @@ interface DataProps {
  */
 function PlayerStatsPercentageChart({ data }: DataProps) {
   return (
-    <div style={{ textAlign: "center" }}>
-      <h4
-        style={{
-          display: "inline-block",
-          margin: "0 auto",
-          marginBottom: "2",
-        }}
-      >
-        3P% (tpp), FG% (fgp) and FT% (ftp)
-      </h4>
+    <div className="chart-container">
+      <h4 className="chart-title">3P% (tpp), FG% (fgp) and FT% (ftp)</h4>
       <br />
-      <div className="smaller medium">
+      <div className="smaller medium pb-3">
         <LineChart
           width={450}
           height={200}
@@ -44,8 +36,16 @@ function PlayerStatsPercentageChart({ data }: DataProps) {
           }}
         >
           <CartesianGrid strokeDasharray="1 5" />
-          <XAxis />
-          <YAxis domain={[0, 100]}/>
+          <XAxis
+            aria-label="game"
+            label={{ value: "game", position: "insideBottom" }}
+          />
+          <YAxis
+            label={{ value: "%", position: "insideLeft" }}
+            tickFormatter={(value) => value.toFixed(1)}
+            domain={[0, 100]}
+            aria-label="percentage"
+          />
           <Tooltip />
           <Legend />
           <Line

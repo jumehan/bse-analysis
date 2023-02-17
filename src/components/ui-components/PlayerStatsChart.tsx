@@ -20,18 +20,10 @@ interface DataProps {
  */
 function PlayerStatsChart({ data }: DataProps) {
   return (
-    <div style={{ textAlign: "center" }}>
-      <h4
-        style={{
-          display: "inline-block",
-          margin: "0 auto",
-          marginBottom: "2",
-        }}
-      >
-        AST / TO
-      </h4>
+    <div className="chart-container">
+      <h4 className="chart-title">AST / TO</h4>
       <br />
-      <div className="smaller medium">
+      <div className="smaller medium pb-3">
         <BarChart
           width={450}
           height={200}
@@ -42,12 +34,19 @@ function PlayerStatsChart({ data }: DataProps) {
           }}
         >
           <CartesianGrid strokeDasharray="1 5" />
-          <XAxis />
-          <YAxis />
+          <XAxis
+            aria-label="game"
+            label={{ value: "game", position: "insideBottom" }}
+          />
+          <YAxis
+            label={{ value: "#", position: "insideLeft" }}
+            tickFormatter={(value) => value.toFixed(1)}
+            aria-label="count"
+          />
           <Tooltip />
           <Legend />
           <Bar dataKey="assists" fill="#2963A2" />
-          <Bar dataKey="turnovers" fill="#4CAABC" />
+          <Bar dataKey="turnovers" fill="#4CAABC" />˝
         </BarChart>
       </div>
     </div>

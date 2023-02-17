@@ -15,10 +15,10 @@ function PlayerProfileList({ player }: PlayerProfileListProps) {
   const { height, weight, nba, college } = player;
 
   const items = [
-    { title: "Height:", value: `${height.feets}' ${height.inches}"` },
-    { title: "Weight:", value: `${weight.pounds} lbs` },
-    { title: "Start:", value: nba.start },
-    { title: "College:", value: college },
+    { title: "Height: ", value: `${height.feets}' ${height.inches}"` },
+    { title: "Weight: ", value: `${weight.pounds} lbs` },
+    { title: "Start: ", value: nba.start },
+    { title: "College: ", value: college },
   ];
 
   return (

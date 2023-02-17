@@ -2,7 +2,7 @@
 
 import { Team } from "../types/teams";
 
-/** teams in the NBA Eastern Conference
+/** Teams in the NBA Eastern Conference
  * [ { team} , ...]
  * team: {
  *  id, name, nickname, code, city, logo, allStar, nbaFranchise: true, leagues
