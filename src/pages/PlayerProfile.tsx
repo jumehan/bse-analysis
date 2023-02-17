@@ -111,35 +111,52 @@ function PlayerProfile() {
       <React.Fragment>
         <Row className="align-items-start">
           <Col sm="4" className="px-2">
-            <PlayerProfileCard
-              player={player.details}
-              id={player.personId || ""}
-            />
+            <Suspense fallback={<LoadingSpinner />}>
+              <PlayerProfileCard
+                player={player.details}
+                id={player.personId || ""}
+              />
+            </Suspense>
           </Col>
           <Col className="px-2" sm="8">
-            <SearchForm />
-            <PlayerTeamCard
-              team={player.stats[0].team}
-              player={player.details}
-            />
-            <PlayerProfileList player={player.details} />
+            <Suspense fallback={<LoadingSpinner />}>
+              <SearchForm />
+            </Suspense>
+            <Suspense fallback={<LoadingSpinner />}>
+              <PlayerTeamCard
+                team={player.stats[0].team}
+                player={player.details}
+              />
+            </Suspense>
+            <Suspense fallback={<LoadingSpinner />}>
+              <PlayerProfileList player={player.details} />
+            </Suspense>
           </Col>
           <Row>
             <Col lg={6}>
-              <PlayerStatsChart data={player.stats} />
+              <Suspense fallback={<LoadingSpinner />}>
+                {" "}
+                <PlayerStatsChart data={player.stats} />
+              </Suspense>
             </Col>
             <Col lg={6}>
-              <PlayerStatsPercentageChart data={player.stats} />
+              <Suspense fallback={<LoadingSpinner />}>
+                <PlayerStatsPercentageChart data={player.stats} />
+              </Suspense>
             </Col>
           </Row>
-          <PlayerShootingStatsTable
-            data={player.stats}
-            season={season}
-            renderRowSubComponent={renderRowSubComponent}
-          />
+          <Suspense fallback={<LoadingSpinner />}>
+            <PlayerShootingStatsTable
+              data={player.stats}
+              season={season}
+              renderRowSubComponent={renderRowSubComponent}
+            />
+          </Suspense>
         </Row>
         <hr />
-        <GlossaryList />
+        <Suspense fallback={<LoadingSpinner />}>
+          <GlossaryList />
+        </Suspense>
       </React.Fragment>
     </Suspense>
   );
