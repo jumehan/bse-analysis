@@ -22,13 +22,35 @@ interface RowProp {
   row: R<PlayerStatsData>;
 }
 
+/** Displays a sorting indicator for a given column based on sorting state
+ * @params col
+ * @returns styled sorting indicator
+ */
+function generateSortingIndicator(col: HeaderGroup<PlayerStatsData>) {
+  return col.disableSortBy ? (
+    ""
+  ) : col.isSorted ? (
+    col.isSortedDesc ? (
+      <SortDown />
+    ) : (
+      <SortUp />
+    )
+  ) : (
+    <SortUpDown />
+  );
+}
+
 /** Table component that displays player shooting stats
  * { App } -> { NavBar, RouteList } -> { PlayerProfile } -> { PlayerShootingStatsTable }
  *
  * @param {PlayerStatsTableProps} { data, season, renderRowSubComponent }
  * @returns styled, paginated, sortable and expandable table
  */
-function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: PlayerStatsTableProps) {
+function PlayerShootingStatsTable({
+  data,
+  season,
+  renderRowSubComponent,
+}: PlayerStatsTableProps) {
   const columns = useMemo(
     () => [
       {
@@ -93,19 +115,14 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
     usePagination // usePagination always placed AFTER useExpanded hook
   );
 
-  const onChangeInSelect = (event: { target: { value: any } }) => {
+  function onChangeInSelect(event: { target: { value: any } }) {
     setPageSize(Number(event.target.value));
-  };
+  }
 
-  const onChangeInInput = (event: { target: { value: any } }) => {
+  function onChangeInInput(event: { target: { value: any } }) {
     const page = event.target.value ? Number(event.target.value) - 1 : 0;
     gotoPage(page);
-  };
-
-  const generateSortingIndicator = (col: HeaderGroup<PlayerStatsData>) => {
-    if (col.disableSortBy) return "";
-    return col.isSorted ? col.isSortedDesc ? <SortDown /> : <SortUp /> : <SortUpDown />;
-  };
+  }
 
   return (
     <Fragment>
@@ -116,47 +133,59 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
         <summary>more info</summary>
         <p className="smaller">
           <i>
-            Games are pre-sorted, most recent games appearing first. Click on the hand icon to get
-            game details. Stats can be sorted by clicking the arrow icon next to each stat.
+            Games are pre-sorted, most recent games appearing first. Click on
+            the hand icon to get game details. Stats can be sorted by clicking
+            the arrow icon next to each stat.
           </i>
         </p>
       </details>
       <div>
-      <Table responsive size="sm" hover striped {...getTableProps()} title="Shooting stats per Game">
-        <caption>Player shooting stats per Game</caption>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((col) => (
-                <th {...col.getHeaderProps(col.getSortByToggleProps())}>
-                  {col.render("Header")}
-                  {generateSortingIndicator(col)}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
+        <Table
+          responsive
+          size="sm"
+          hover
+          striped
+          {...getTableProps()}
+          title="Shooting stats per Game"
+        >
+          <caption>Player shooting stats per Game</caption>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((col) => (
+                  <th {...col.getHeaderProps(col.getSortByToggleProps())}>
+                    {col.render("Header")}
+                    {generateSortingIndicator(col)}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
 
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <Fragment key={row.getRowProps().key}>
-                <tr>
-                  {row.cells.map((cell) => {
-                    return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-                  })}
-                </tr>
-                {row.isExpanded && (
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <Fragment key={row.getRowProps().key}>
                   <tr>
-                    <td colSpan={visibleColumns.length}>{renderRowSubComponent(row)}</td>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );
+                    })}
                   </tr>
-                )}
-              </Fragment>
-            );
-          })}
-        </tbody>
-      </Table>
+                  {row.isExpanded && (
+                    <tr>
+                      <td colSpan={visibleColumns.length}>
+                        {renderRowSubComponent(row)}
+                      </td>
+                    </tr>
+                  )}
+                </Fragment>
+              );
+            })}
+          </tbody>
+        </Table>
       </div>
       <Row style={{ textAlign: "center" }} className="pb-3">
         <Col xs={3} sm={3} md={3}>
@@ -169,7 +198,12 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           >
             {<span className="pagination">{"<<"}</span>}
           </Button>
-          <Button size="sm" color="primary" onClick={previousPage} disabled={!canPreviousPage}>
+          <Button
+            size="sm"
+            color="primary"
+            onClick={previousPage}
+            disabled={!canPreviousPage}
+          >
             {<span className="pagination">{"<"}</span>}
           </Button>
         </Col>
@@ -208,7 +242,12 @@ function PlayerShootingStatsTable({ data, season, renderRowSubComponent }: Playe
           </Input>
         </Col>
         <Col xs={3} sm={3} md={3}>
-          <Button size="sm" color="primary" onClick={nextPage} disabled={!canNextPage}>
+          <Button
+            size="sm"
+            color="primary"
+            onClick={nextPage}
+            disabled={!canNextPage}
+          >
             {<span className="pagination">{">"}</span>}
           </Button>
           <Button
