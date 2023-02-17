@@ -15,6 +15,7 @@ Check out the [Live Demo](https://nba-analysis.onrender.com/players/265) to expl
     - [DESIGN DOCS](#design-docs)
       - [Tech Stack:](#tech-stack)
       - [Data Sources:](#data-sources)
+      - [Data Visualization:](#data-visualization)
     - [FUTURE TODOs](#future-todos)
       - [Features:](#features)
       - [Data:](#data)
@@ -58,7 +59,7 @@ Clicking on a row in the player statistics table displays additional information
 
 #### Tech Stack:
 This project was built on `vitejs` using the `react-ts` framework.
-I wanted to build a visual, highlt interactive frontend showcasing using `reactjs`, `JavaScrip` and `TypeScript`.
+I wanted to build a visual, highlt interactive frontend using `reactjs`, `JavaScrip` and `TypeScript`.
 
 #### Data Sources:
 As a casual basketball fan and by no means a sports analytics expert, it wasn't initially clear what data and statistics would matter most to a decision-maker in the NBA. To determine this, I did research on YouTube, looked at online resources (NBA, ESPN, FiveThirtyEight, Basketball Reference, etc.), and interviewed a sports analytics expert who had worked at MSG. In the end, I felt that a tool that shows a wide range of statistics and allows easy sorting of the data would be the most useful.
@@ -70,6 +71,9 @@ Some data is also saved locally in `JSON`, from `NBAData.net` to bypass CORS sam
 Data is from the "2022-2023" NBA season for this project. However, the code could easily be modified to allow multi-season data for historical comparisons.
 
 *Please allow some time between calls. This project runs on the free subscription tier and is limited on throttling, the number of calls per minute, and calls per day.
+
+#### Data Visualization:
+I mainly used the `react-table` and `recharts` libraries to render data visually and build the interactive interfaces.
 
 ---
 

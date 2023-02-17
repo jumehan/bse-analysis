@@ -44,7 +44,7 @@ interface PlayerProfileProps {
 /** Player Profile Page
  * Displays the player profile incl. bio, stats, data table, etc.
  * State: stores player data { details, stats, personId, isLoading }
- * { App } -> { AppeList } -> { ProfilePage }
+ * { App } -> { AppRoutes } -> { PlayerProfile }
  * @returns Player Profile Page
  */
 function PlayerProfile() {
