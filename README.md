@@ -16,6 +16,7 @@ Check out the [Live Demo](https://nba-analysis.onrender.com/players/265) to expl
       - [Tech Stack:](#tech-stack)
       - [Data Sources:](#data-sources)
       - [Data Visualization:](#data-visualization)
+    - [TESTS](#tests)
     - [FUTURE TODOs](#future-todos)
       - [Features:](#features)
       - [Data:](#data)
@@ -24,7 +25,7 @@ Check out the [Live Demo](https://nba-analysis.onrender.com/players/265) to expl
       - [UI / display:](#ui--display)
       - [UX:](#ux)
       - [Performance:](#performance)
-      - [Site Reliability:](#site-reliability)
+      - [Site Reliability \& Testing:](#site-reliability--testing)
     - [SETUP](#setup)
 
 ---
@@ -77,6 +78,11 @@ I mainly used the `react-table` and `recharts` libraries to render data visually
 
 ---
 
+### TESTS
+I have started writting a few unit tests using `jest` to test the single utility methods and functions under the `__test__` folder verify the behavior of the code, such as making sure that a function returns the expected results.
+
+---
+
 ### FUTURE TODOs
 
 Additional features that could be added to the project include:
@@ -106,6 +112,7 @@ Additional features that could be added to the project include:
 #### UI / display:
 - Currently, this project's chart visualization allows users to view data at a high level but could be improved with additional features such as zooming in and out.
 - Additionally, the horizontal scroll of the player stats table can be difficult to use on smaller screens, so this can be improved in future versions.
+- Improved mobile responsiveness: charts and table do not currently support smaller mobile screens.
 
 #### UX:
 - In future versions, it would be helpful to display game details without having to manually expand each row in the player stats table. However, this may require rethinking the table layout, as it is already very dense. One potential solution could be splitting the table into smaller tables.
@@ -115,8 +122,10 @@ Additional features that could be added to the project include:
 #### Performance:
 - Improving performance is an ongoing priority for this project. Code splitting and lazy loading were implemented to reduce load times, and further deconstruction of components can be done to optimize performance further.
 
-#### Site Reliability:
+#### Site Reliability & Testing:
 - Future versions of this project will include additional testing for quality assurance and more robust error handling to gracefully handle API/data fetch errors. One example of missing data is that RapidAPI's NBA-API does not have team and season data for Isaiah Thomas.
+- *Integration tests*: I would write integration tests to test how multiple parts of the application interact with each other.
+- Additionaly, I would think about edge cases and write additional unit test to verify the behavior of the code.
 
 ---
 
@@ -127,3 +136,8 @@ In the project directory, run:
 - `npm run dev` to run dev mode on your local server
 
 Note: this project requires `.env` variables to run correctly
+
+To run the tests, run:
+
+- `npm test` to run all tests on your local server
+

@@ -1,6 +1,13 @@
 import { debounce } from "lodash";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { FormGroup, Input, Label, ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Alert,
+  FormGroup,
+  Input,
+  Label,
+  ListGroup,
+  ListGroupItem,
+} from "reactstrap";
 import nbaApi from "../../api/nbaApi";
 
 interface SearchResults {
@@ -13,12 +20,15 @@ interface SearchResults {
  * Handles input changes and searches for results matching user input
  * Renders list of results if found
  * Use lodash debounce to delay the search to avoid unnecessary API calls
+ * State: playerList, list of player results from search
+ * State: hasResults, boolean indicating if user has searched
  * { App } -> { AppList } -> { PlayerProfile } -> { SearchForm }
  *
  * @returns styled Form Component
  */
 function SearchForm() {
   const [playerList, setPlayerList] = useState<Array<SearchResults>>([]);
+  const [hasSearched, setHasSearched] = useState(false);
 
   async function search(name: string) {
     const resp = await nbaApi.getPlayers(name);
@@ -36,6 +46,7 @@ function SearchForm() {
           lastname: player.lastname,
         }))
       );
+      setHasSearched(true);
     }, 300)
   ).current;
 
@@ -52,7 +63,9 @@ function SearchForm() {
 
   return (
     <FormGroup>
-      <Label for="search"></Label>
+      <Label for="search">
+        <h3>Search for player by last name:</h3>
+      </Label>
       <Input
         id="seach"
         name="search"
@@ -63,11 +76,26 @@ function SearchForm() {
         onChange={handleChange}
       />
       <ListGroup className="glossary py-2">
-        {playerList.map((player) => (
-          <ListGroupItem key={player.id} action href={`${player.id}`} tag="a">
-            {player.firstname} {player.lastname}
-          </ListGroupItem>
-        ))}
+        {hasSearched ? (
+          playerList.length ? (
+            playerList.map((player) => (
+              <ListGroupItem
+                key={player.id}
+                action
+                href={`${player.id}`}
+                tag="a"
+              >
+                {player.firstname} {player.lastname}
+              </ListGroupItem>
+            ))
+          ) : (
+            <ListGroupItem color="secondary">
+              No players found, please try again!
+            </ListGroupItem>
+          )
+        ) : (
+          ""
+        )}
       </ListGroup>
     </FormGroup>
   );

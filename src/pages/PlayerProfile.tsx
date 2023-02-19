@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Row as R } from "react-table";
 import { Col, Row } from "reactstrap";
 import nbaApi from "../api/nbaApi";
@@ -106,9 +106,20 @@ function PlayerProfile() {
     return <LoadingSpinner />;
   }
 
+  if (!player.stats[0] || !player.stats[0].team) {
+    return (
+      <>
+        <div>Oops, there's an error loading player data.</div>
+        <div>
+          <Link to="/">Return and try again</Link>
+        </div>
+      </>
+    );
+  }
+
   return (
     <Suspense fallback={<LoadingSpinner />}>
-      <React.Fragment>
+      <>
         <Row className="align-items-start">
           <Col sm="4" className="px-2">
             <PlayerProfileCard
@@ -141,7 +152,7 @@ function PlayerProfile() {
         </Row>
         <hr />
         <GlossaryList />
-      </React.Fragment>
+      </>
     </Suspense>
   );
 }

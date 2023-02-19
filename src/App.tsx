@@ -9,7 +9,7 @@ import AppRoutes from "./components/routes/AppRoutes";
  */
 function App(): JSX.Element {
   return (
-    <Container className="my-4">
+    <Container className="my-4" style={{ maxWidth: "1024", minWidth: "768" }}>
       <BrowserRouter>
         <NavBar />
         <AppRoutes />
