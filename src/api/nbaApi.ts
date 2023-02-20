@@ -11,7 +11,6 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 class nbaApi {
   /** Base request constructor */
   static async request(endpoint: string, data = {}, method = "get") {
-    console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
     const headers = {
@@ -38,7 +37,6 @@ class nbaApi {
     const resp = await this.request("players/", {
       id: id,
     });
-    console.debug("getPlayerDetails()", resp);
     return resp;
   }
 
@@ -56,7 +54,6 @@ class nbaApi {
       id: id,
       season: season,
     });
-    console.debug("getPlayerStats()", resp);
     return resp;
   }
 
@@ -69,7 +66,6 @@ class nbaApi {
     const resp = await this.request("players/", {
       search: search,
     });
-    console.debug("getPlayers()", resp);
     return resp;
   }
 
@@ -84,7 +80,6 @@ class nbaApi {
       team: team,
       season: "2022", // default to most recent season 22-23 for demo purposes
     });
-    console.debug("getPlayersByTeam()", resp);
     return resp;
   }
 
@@ -97,7 +92,6 @@ class nbaApi {
     const resp = await this.request("games/", {
       id: id,
     });
-    console.debug("getGameDetails()", resp);
     return resp;
   }
 }

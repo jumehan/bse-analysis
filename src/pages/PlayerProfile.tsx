@@ -81,7 +81,7 @@ function PlayerProfile() {
             isLoading: false,
           });
         } catch (err) {
-          console.error(err);
+          console.error("fetchPlayer", err);
           setError(err as Error);
         }
       }
@@ -97,9 +97,18 @@ function PlayerProfile() {
     return <GameDetailsCard id={id} />;
   };
 
-  // TODO: handle error more elegantly in future versions
   if (error) {
-    return <div>"Failed to fetch player data"</div>;
+    return (
+      <>
+        <div>
+          Failed to fetch player data, you may have exceeded the rate limit per
+          minute.
+        </div>
+        <div>
+          <Link to="/">Please wait a minute, and try again</Link>
+        </div>
+      </>
+    );
   }
 
   if (player.isLoading || !player.details || !player.stats) {

@@ -81,6 +81,8 @@ th {
 
 .chart-container {
   text-align: center;
+  position: relative;
+  width: 100%;
 }
 .chart-title {
   display: inline-block;

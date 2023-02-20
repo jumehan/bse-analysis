@@ -23,7 +23,6 @@ class nbaData {
         p.lastName === lastname &&
         p.dateOfBirthUTC === birthdate
     );
-    console.debug("getPlayerIdByName", player);
     return player[0]?.personId ?? "";
   }
 }

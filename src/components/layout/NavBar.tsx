@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   AccordionBody,
   AccordionHeader,
@@ -72,10 +71,8 @@ const EasternConferenceList = (): JSX.Element => {
       <AccordionHeader targetId="east">Eastern Conference</AccordionHeader>
       <AccordionBody accordionId="east">
         {eastConference.map((team) => (
-          // TODO: Currently link to "", future versions should link a route
-          <DropdownItem key={team.code} tag={Link} to="">
-            {team.name}
-          </DropdownItem>
+          // TODO: Add link to team page 
+          <DropdownItem key={team.code}>{team.name}</DropdownItem>
         ))}
       </AccordionBody>
     </AccordionItem>
@@ -91,7 +88,7 @@ const WesternConferenceList = (): JSX.Element => {
       <AccordionHeader targetId="west">Western Conference</AccordionHeader>
       <AccordionBody accordionId="west">
         {westConference.map((team) => (
-          <DropdownItem className="px-0" key={team.code} tag={Link} to="">
+          <DropdownItem className="px-0" key={team.code}>
             {team.name}
           </DropdownItem>
         ))}
