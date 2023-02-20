@@ -1,14 +1,15 @@
 export default {
-  // ...
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": [
+      "ts-jest",
+      {
+        esModuleInterop: true,
+        isolatedModules: true,
+      },
+    ],
   },
-  globals: {
-    "ts-jest": {
-      isolatedModules: true,
-    },
-  },
-  testEnvironment: "node",
-  testMatch: ["**/__tests__/**/*.test.(ts|js)"],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  testEnvironment: "jsdom", // Change the test environment to jsdom
+  testMatch: ["**/__tests__/**/*.test.(ts|js|tsx)"],
+  moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
+  preset: "ts-jest",
 };
