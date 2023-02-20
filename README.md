@@ -79,7 +79,7 @@ I mainly used the `react-table` and `recharts` libraries to render data visually
 ---
 
 ### TESTS
-I have started writting a few unit tests using `jest` to test the single utility methods and functions under the `__test__` folder verify the behavior of the code, such as making sure that a function returns the expected results.
+I have started writting a few unit tests using `jest` to test the single utility methods and functions under the `__test__` folder verify the behavior of the code, such as making sure that a function returns the expected results. I also tested some components Charts using the `react-testing` library with `render`, using the `screen` object from `@testing-library/react` to verify that components are rendered correctly.
 
 ---
 
@@ -125,6 +125,7 @@ Additional features that could be added to the project include:
 #### Site Reliability & Testing:
 - Future versions of this project will include additional testing for quality assurance and more robust error handling to gracefully handle API/data fetch errors. One example of missing data is that RapidAPI's NBA-API does not have team and season data for Isaiah Thomas.
 - *Integration tests*: I would write integration tests to test how multiple parts of the application interact with each other.
+- *Unit tests*: I would write unit tests to test every individual functions and methods within application to aim for full coverage.
 - Additionaly, I would think about edge cases and write additional unit test to verify the behavior of the code.
 
 ---

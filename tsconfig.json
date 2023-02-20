@@ -20,15 +20,15 @@
       "*": ["src/*"]
     }
   },
+  "types": ["node", "jest", "@testing-library/jest-dom"],
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsconfig": {
-          "esModuleInterop": true
-        }
-      }
+  "typeRoots": {
+    "compilerOptions": {
+      "typeRoots": [
+        "node_modules/@types",
+        "node_modules/@testing-library/jest-dom/node_modules/@types"
+      ]
     }
   }
 }
