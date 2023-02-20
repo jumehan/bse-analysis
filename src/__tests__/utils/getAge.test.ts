@@ -1,4 +1,4 @@
-import getAge from "../utils/getAge";
+import getAge from "../../utils/getAge";
 
 /** getAge returns the expected age given a birthdate format 'YYYY-MM-DD' */
 describe("getAge", () => {

@@ -1,4 +1,4 @@
-import nbaData from "../api/nbaData";
+import nbaData from "../../api/nbaData";
 
 describe("nbaData", () => {
   /** Testing the getPlayerIdByName method */
