@@ -15,7 +15,7 @@ interface DataProps {
 
 /** React Component
  * Displays chart with AST to TO data for a player over a season
- * @prop data: player stats data
+ * @props data: player stats data
  * { App } -> { RouteList } -> { PlayerProfile } -> { PlayerStatsChart }
  */
 function PlayerStatsChart({ data }: DataProps) {

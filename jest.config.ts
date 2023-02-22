@@ -8,7 +8,7 @@ export default {
       },
     ],
   },
-  testEnvironment: "jsdom", // Change the test environment to jsdom
+  testEnvironment: "jsdom",
   testMatch: ["**/__tests__/**/*.test.(ts|js|tsx)"],
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   preset: "ts-jest",

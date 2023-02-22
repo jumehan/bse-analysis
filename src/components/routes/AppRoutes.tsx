@@ -9,6 +9,7 @@ const NotFound = lazy(() => import("../../pages/NotFound"));
  * Displays a list of routes
  * { App } -> { AppRoutes }
  * @returns {JSX.Element} List of routes
+ * Currently reroutes to a featured player "265" if "/*" -> in a future TODO, reroute to a homepage
  */
 function AppRoutes(): JSX.Element {
   return (

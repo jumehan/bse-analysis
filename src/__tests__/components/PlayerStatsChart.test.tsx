@@ -25,7 +25,8 @@ describe("PlayerStatsChart", () => {
         turnovers: 3,
       },
     ];
-    render(<PlayerStatsChart data={data} />);
+    render(<PlayerStatsChart data={data} />); // Render chart component with mock data
+
     expect(screen.getByText("AST / TO")).toBeInTheDocument();
     expect(
       screen.getByLabelText("game", {

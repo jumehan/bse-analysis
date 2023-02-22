@@ -1,13 +1,6 @@
 import { debounce } from "lodash";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import {
-  Alert,
-  FormGroup,
-  Input,
-  Label,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
+import { FormGroup, Input, Label, ListGroup, ListGroupItem } from "reactstrap";
 import nbaApi from "../../api/nbaApi";
 
 interface SearchResults {
@@ -90,7 +83,7 @@ function SearchForm() {
             ))
           ) : (
             <ListGroupItem color="secondary">
-              No players found, please try again!
+              No player found, please try again!
             </ListGroupItem>
           )
         ) : (

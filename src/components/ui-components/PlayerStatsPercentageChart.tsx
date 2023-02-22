@@ -15,7 +15,7 @@ interface DataProps {
 
 /** React Component
  * Displays chart with 3P%, FG% and FT% data for a player over a season
- * @prop data: player stats data
+ * @props data: player stats data
  * { App } -> { RouteList } -> { PlayerProfile } -> { PlayerStatsPercentageChart }
  */
 function PlayerStatsPercentageChart({ data }: DataProps) {
