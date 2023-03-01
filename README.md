@@ -60,7 +60,7 @@ Clicking on a row in the player statistics table displays additional information
 
 #### Tech Stack:
 This project was built on `vitejs` using the `react-ts` framework.
-I wanted to build a visual, highlt interactive frontend using `reactjs`, `JavaScrip` and `TypeScript`.
+I wanted to build a visual, highlt interactive frontend using `reactjs`, `JavaScript` and `TypeScript`.
 
 #### Data Sources:
 As a casual basketball fan and by no means a sports analytics expert, it wasn't initially clear what data and statistics would matter most to a decision-maker in the NBA. To determine this, I did research on YouTube, looked at online resources (NBA, ESPN, FiveThirtyEight, Basketball Reference, etc.), and interviewed a sports analytics expert who had worked at MSG. In the end, I felt that a tool that shows a wide range of statistics and allows easy sorting of the data would be the most useful.
